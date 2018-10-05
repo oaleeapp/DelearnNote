@@ -26,10 +26,10 @@ final class TodoController {
         guard req.http.contentType == .json else {
             print(req.http.contentType)
             let slackCommand = try URLEncodedFormDecoder().decode(SlackCommand.self, from: String(data: req.http.body.data!, encoding: .utf8) ?? "")
-            if slackCommand.command == "/add" {
+            if slackCommand.command == "/otoadd" {
                 let slackTodo = Todo(id: nil, title: slackCommand.text)
                 print(slackTodo)
-                let res = try req.client().post("https://hooks.slack.com/services/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"){ post in
+                let res = try req.client().post("https://hooks.slack.com/services/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"){ post in
                     post.http.contentType = .json
                     try post.content.encode("""
                         {"text": "Add `\(slackTodo.title)` to the list"}
@@ -43,7 +43,7 @@ final class TodoController {
                 Todo.query(on: req).all().map(to: [Todo].self) { todoList in
                     let todoListString = todoList.reduce("Todo list(\(todoList.count)): \n"){$0 + "  \($1.id!). \($1.title) \n"}
                     print("todoListString \(todoListString)")
-                    let res = try req.client().post("https://hooks.slack.com/services/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"){ post in
+                    let res = try req.client().post("https://hooks.slack.com/services/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"){ post in
                         post.http.contentType = .json
                         try post.content.encode("""
                             {"text": "\(todoListString)"}
@@ -60,7 +60,7 @@ final class TodoController {
 
         }
         return try req.content.decode(Todo.self).flatMap { todo in
-            let res = try req.client().post("https://hooks.slack.com/services/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"){ post in
+            let res = try req.client().post("https://hooks.slack.com/services/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"){ post in
                 post.http.contentType = .json
                 try post.content.encode("""
                     {"text": "Add `\(todo.title)` to the list"}

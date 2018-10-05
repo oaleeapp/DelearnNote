@@ -17,8 +17,8 @@ final class SlackCommand: SQLiteModel {
     var token: String
     var team_id: String
     var team_domain: String
-    var enterprise_id: String
-    var enterprise_name: String
+//    var enterprise_id: String
+//    var enterprise_name: String
     var channel_id: String
     var channel_name: String
     var user_id: String
@@ -47,8 +47,8 @@ final class SlackCommand: SQLiteModel {
         self.token = ""
         self.team_id = ""
         self.team_domain = ""
-        self.enterprise_id = ""
-        self.enterprise_name = ""
+//        self.enterprise_id = ""
+//        self.enterprise_name = ""
         self.channel_id = ""
         self.channel_name = ""
         self.user_id = ""

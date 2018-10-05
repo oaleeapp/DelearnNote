@@ -12,8 +12,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/url-encoded-form.git", from: "1.0.0"),
     ],
     targets: [
-        .target(name: "App", dependencies: ["FluentSQLite", "Vapor"]),
-        .target(name: "App", dependencies: ["URLEncodedForm"])
+        .target(name: "App", dependencies: ["FluentSQLite", "Vapor","URLEncodedForm"]),
         .target(name: "Run", dependencies: ["App"]),
         .testTarget(name: "AppTests", dependencies: ["App"])
 
